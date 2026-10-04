@@ -19,14 +19,25 @@
 </head>
 <body>
   <h1>PromptMask Privacy Policy</h1>
-  <p class="meta">Last updated: April 6, 2026</p>
+  <p class="meta">Last updated: October 4, 2026</p>
 
-  <p>PromptMask does not collect, transmit, or store any personal data. All processing happens locally on your device.</p>
+  <p>This policy describes the PromptMask browser extension, which masks selected sensitive details in AI chat prompts. It covers the current extension implementation, not the separate product landing page or your chosen chat provider.</p>
 
-  <p>Local storage is used only to cache a model file on your device between sessions. No prompt text, personal information, or browsing history is ever written to storage or sent anywhere.</p>
+  <h2>Local redaction and model downloads</h2>
+  <p>PromptMask runs Gemma inference on your device using MediaPipe and WebGPU. Its redaction code does not send prompts to a cloud inference service. The model is downloaded from Hugging Face and its delivery hosts when it is not available in the browser cache. Those providers receive ordinary network metadata associated with the download, such as your IP address and request details.</p>
 
-  <p>We do not sell or share any data with third parties.</p>
+  <h2>Browser storage and diagnostic logs</h2>
+  <p>The browser Cache API stores model files. Chrome local storage stores site and category settings and model download/loading progress and status. The extension does not maintain a prompt-history database. It requests persistent storage, but the browser may deny persistence or clear cached data, requiring another model download.</p>
 
-  <p><strong>Contact:</strong> nidhi@aer.app</p>
+  <p>The current extension logs the framed model prompts, raw model results, and normalized output to the extension's developer console. These logs can contain sensitive text and may remain in the console while its session or log preservation is active. Avoid sharing console exports or screenshots that contain private information.</p>
+
+  <h2>Chat sites and masking limits</h2>
+  <p>Your draft is typed into the chat site's composer. Scripts on that page can read it before PromptMask intercepts submission. Local model inference does not prevent the site from observing the original draft.</p>
+
+  <p>On enabled sites, PromptMask intercepts submission, places the redacted result in the composer, and asks you to review and submit again. The message you then submit goes to your chosen chat provider under that provider's policies. Masking can miss sensitive details, and disabled sites or categories allow corresponding information to remain. Review the full message before sending it.</p>
+
+  <p>For implementation details, see the <a href="https://github.com/Team-AER/PromptMask">PromptMask source repository</a>. Gemma is provided under and subject to the <a href="https://ai.google.dev/gemma/terms">Gemma Terms of Use</a>.</p>
+
+  <p><strong>Contact:</strong> <a href="mailto:nidhi@aer.app">nidhi@aer.app</a></p>
 </body>
 </html>
